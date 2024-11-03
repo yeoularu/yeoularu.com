@@ -1,0 +1,30 @@
+<footer class="flex items-center justify-center p-4 mt-auto">
+  <button id="beans">🫘</button>
+</footer>
+
+<script>
+  const emojiSequence = ["🫘", "💧", "🌱", "☘️", "🍀", "🌿", "🌳"];
+  const beans = document.getElementById("beans");
+  const themeToggleBtn = document.getElementById("theme-toggle");
+
+  let count = 0;
+
+  if (beans && themeToggleBtn) {
+    const handleBeansClick = () => {
+      count < 2
+        ? (beans.textContent = emojiSequence[++count])
+        : beans.removeEventListener("click", handleBeansClick);
+    };
+
+    const handleThemeToggleClick = () => {
+      if (count < 2) return;
+
+      count < emojiSequence.length - 1
+        ? (beans.textContent = emojiSequence[++count])
+        : themeToggleBtn.removeEventListener("click", handleThemeToggleClick);
+    };
+
+    beans.addEventListener("click", handleBeansClick);
+    themeToggleBtn.addEventListener("click", handleThemeToggleClick);
+  }
+</script>
