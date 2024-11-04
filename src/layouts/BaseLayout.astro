@@ -43,11 +43,11 @@ const { title } = Astro.props;
   </head>
 
   <body
-    class="antialiased dark:bg-gray-900 format lg:format-lg dark:format-invert mx-auto min-h-dvh"
+    class="antialiased dark:bg-gray-900 format lg:format-lg dark:format-invert mx-auto min-h-dvh flex flex-col gap-4 p-4"
   >
     <Header />
 
-    <main class="flex flex-col p-4">
+    <main class="flex-1">
       <slot />
     </main>
 
