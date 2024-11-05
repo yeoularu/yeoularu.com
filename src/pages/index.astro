@@ -25,7 +25,7 @@ const allBlogPosts = await getCollection("blog");
     </a>
 
     <div class="format-headings:mb-2">
-      <h3>Posts</h3>
+      <h3 transition:name="ui-posts">Posts</h3>
       <div class="flex flex-col gap-4">
         {
           allBlogPosts.slice(0, 5).map((post) => (
