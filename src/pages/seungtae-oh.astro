@@ -1,5 +1,10 @@
 ---
+import GithubLogo from "../assets/icons/GithubLogo.astro";
+import MapPinIcon from "../assets/icons/MapPinIcon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("project");
 ---
 
 <BaseLayout title="Seungtae Oh">
@@ -11,42 +16,86 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
 
     <div class="flex items-center gap-2">
-      <svg
-        class="w-6 h-6"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-          d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-          d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
-        ></path>
-      </svg>
+      <MapPinIcon />
       <span>Seoul, Republic of Korea</span>
     </div>
 
     <div class="format-p:my-0 format-strong:font-normal space-y-2">
       <p>
-        I like to build things that are useful and fun, always keeping the <strong
-          >user experience</strong
-        > in mind. I've been developing web applications, mostly using <strong
-          >React</strong
-        >. Nowadays, I'm getting into game development with <strong
-          >Unity</strong
-        >.
+        I like to build things that are useful and fun, always keeping the{" "}
+        <strong>user experience</strong> in mind. I've been developing web applications,
+        mostly using <strong>React</strong>. Nowadays, I'm getting into game
+        development with <strong>Unity</strong>.
       </p>
+    </div>
+
+    <div>
+      <p class="lead">Projects</p>
+      <div class="flex flex-col format-hr:my-8">
+        {
+          allProjects
+            .toSorted(
+              (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
+            )
+            .map(({ data }) => {
+              const {
+                title,
+                skills,
+                description,
+                startDate,
+                role,
+                endDate,
+                siteUrl,
+                githubUrl,
+              } = data;
+
+              const [startYear, startMonth] = startDate
+                .toISOString()
+                .split("-");
+
+              let dateString = `${startYear.slice(2)}.${startMonth}`;
+
+              if (endDate) {
+                const [endYear, endMonth] = endDate.toISOString().split("-");
+                dateString += ` - ${endYear.slice(2)}.${endMonth}`;
+              }
+
+              return (
+                <div class="flex flex-col">
+                  <div class="flex justify-between items-center ">
+                    <div class="flex flex-wrap gap-4 format-h4:mb-0">
+                      <h4>{title}</h4>
+                      <div class="flex gap-2 items-center text-sm">
+                        <span>{dateString}</span>
+                        <span class="hidden min-[400px]:inline-block">
+                          {role}
+                        </span>
+                      </div>
+                    </div>
+                    {githubUrl && (
+                      <a
+                        href={githubUrl}
+                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-2"
+                      >
+                        <GithubLogo />
+                      </a>
+                    )}
+                  </div>
+                  <a class="mr-auto" href={siteUrl}>
+                    {siteUrl}
+                  </a>
+
+                  <i class="block min-[400px]:hidden">{role}</i>
+
+                  <i>{description}</i>
+
+                  <span>{skills.join(", ")}</span>
+                  <hr />
+                </div>
+              );
+            })
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>

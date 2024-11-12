@@ -1,0 +1,12 @@
+title: Prompt Mango
+skills:
+  - Vite PWA
+  - React
+  - Tailwind CSS
+  - shadcn/ui
+
+description: LLM prompt editor
+startDate: 2024-09-17
+
+siteUrl: https://yeoularu.github.io/prompt-mango
+githubUrl: https://github.com/yeoularu/prompt-mango

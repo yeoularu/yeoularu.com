@@ -1,0 +1,15 @@
+title: story-node
+skills:
+  - Next.js
+  - TanStack Query
+  - Supabase
+  - D3.js
+  - Tailwind CSS
+  - shadcn/ui
+
+description: Storytelling platform with folder structure and graph views
+startDate: 2024-06-20
+endDate: 2024-07-12
+
+siteUrl: https://story-node.com
+githubUrl: https://github.com/yeoularu/story-node

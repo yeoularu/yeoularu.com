@@ -1,0 +1,11 @@
+title: HarMe
+skills:
+  - Next.js
+  - SWR
+  - Web Speech API
+
+role: Sole frontend, team of 5
+description: SeSAC Hackathon 2024 2nd place. Create music via voice command.
+startDate: 2024-08-01
+
+githubUrl: https://github.com/mintai09/HarMe-HarmonyMelodies
