@@ -21,6 +21,7 @@ const ProjectCollection = defineCollection({
     endDate: z.date().optional(),
     images: z.array(z.string()).optional(),
     siteUrl: z.string().optional(),
+    youtubeUrl: z.string().optional(),
     githubUrl: z.string().optional(),
   }),
 });
