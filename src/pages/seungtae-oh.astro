@@ -1,6 +1,7 @@
 ---
 import GithubLogo from "../assets/icons/GithubLogo.astro";
 import MapPinIcon from "../assets/icons/MapPinIcon.astro";
+import YoutubeLogo from "../assets/icons/YoutubeLogo.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -46,6 +47,7 @@ const allProjects = await getCollection("project");
                 role,
                 endDate,
                 siteUrl,
+                youtubeUrl,
                 githubUrl,
               } = data;
 
@@ -72,6 +74,14 @@ const allProjects = await getCollection("project");
                         </span>
                       </div>
                     </div>
+                    {youtubeUrl && (
+                      <a
+                        href={youtubeUrl}
+                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg p-2"
+                      >
+                        <YoutubeLogo />
+                      </a>
+                    )}
                     {githubUrl && (
                       <a
                         href={githubUrl}
