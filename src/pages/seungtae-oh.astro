@@ -67,9 +67,9 @@ const allProjects = await getCollection("project");
                   <div class="flex justify-between items-center">
                     <div class="flex flex-wrap gap-4 format-h4:mb-0">
                       <h4>{title}</h4>
-                      <div class="flex gap-2 items-center text-sm">
+                      <div class="flex gap-4 items-center text-sm">
                         <span>{dateString}</span>
-                        <span class="hidden min-[400px]:inline-block">
+                        <span class="hidden sm:inline-block">
                           {role}
                         </span>
                       </div>
@@ -95,9 +95,9 @@ const allProjects = await getCollection("project");
                     {siteUrl}
                   </a>
 
-                  <i class="block min-[400px]:hidden">{role}</i>
+                  <i class="block sm:hidden">{role}</i>
 
-                  <i>{description}</i>
+                  <span>{description}</span>
 
                   <span>{skills.join(", ")}</span>
                   <hr />
